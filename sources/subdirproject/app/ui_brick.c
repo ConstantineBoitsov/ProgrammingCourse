@@ -15,13 +15,18 @@ void ui_brick()
 
 void input_abc(int * a, int * b, int * c)
 {
-    printf("Input dimensions of the brick:\n");
+    printf("Input 3 dimensions of the brick:\n");
     scanf("%d %d %d", a, b, c);
 }
 
 void input_hole(int * r, int * s)
 {
-    printf("Input dimensions of the hole:\n");
+    printf("Input 2 dimensions of the hole:\n");
     scanf("%d %d", r, s);
+}
+
+void second_task_text()
+{
+    printf("\nОпределить, пройдет ли кирпич со сторонами а, b, c \nсквозь прямоугольное отверстие в стене со сторонами r и s. \nСтороны отверстия должны быть параллельны граням кирпича.\n");
 }
 

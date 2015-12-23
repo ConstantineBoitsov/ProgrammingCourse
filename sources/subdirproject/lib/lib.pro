@@ -14,13 +14,15 @@ SOURCES += \
     brick.c \
     matrix.c \
     meter_to_sazhen.c \
-    swapper.c
+    swapper.c \
+    lower.c
 
 HEADERS += \
     brick.h \
     matrix.h \
     meter_to_sazhen.h \
-    swapper.h
+    swapper.h \
+    lower.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

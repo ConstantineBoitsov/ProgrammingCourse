@@ -54,6 +54,7 @@ void matrix(int coloumns, int rows)
         free(matrix[i]);
         free(post_matrix[i]);
     }
+
     free(matrix);
     free(post_matrix);
 }

@@ -3,5 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     app \
     lib \
-    test \
-    simple
+    testtest \
+    untitled

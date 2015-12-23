@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    rational_nu.cpp
+    rational_num.cpp
 
 HEADERS += \
     rational_num.h

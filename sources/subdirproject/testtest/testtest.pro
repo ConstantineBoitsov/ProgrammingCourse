@@ -1,23 +1,22 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2015-12-23T02:40:02
+#
+#-------------------------------------------------
+
+QT       += testlib
+
+QT       -= gui
+
+TARGET = tst_testtesttest
+CONFIG   += console
+CONFIG   -= app_bundle
+
 TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
 
-SOURCES += main.c \
-    ui.c \
-    ui_brick.c \
-    ui_matrix.c \
-    ui_meter_to_sazhen.c \
-    ui_swapper.c \
-    ui_lower.c
 
-HEADERS += \
-    ui.h \
-    ui_brick.h \
-    ui_matrix.h \
-    ui_meter_to_sazhen.h \
-    ui_swapper.h \
-    ui_lower.h
+SOURCES += tst_testtesttest.cpp
+DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../lib/release/ -llib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../lib/debug/ -llib
