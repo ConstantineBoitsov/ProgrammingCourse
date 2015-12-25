@@ -1,26 +1,43 @@
 #include <QString>
 #include <QtTest>
+#include "meter_to_sazhen.h"
+#include "swapper.h"
 
-class TesttestTest : public QObject
+class BoitsovTest : public QObject
 {
     Q_OBJECT
 
 public:
-    TesttestTest();
+    BoitsovTest();
 
 private Q_SLOTS:
-    void testCase1();
+    void test_meter_to_sazhen();
+    void test_swapper();
 };
 
-TesttestTest::TesttestTest()
+BoitsovTest::BoitsovTest()
 {
 }
 
-void TesttestTest::testCase1()
+void BoitsovTest::test_meter_to_sazhen()
 {
-    QVERIFY2(true, "Failure");
+    double length = 19;
+    int int_sazhen, int_arshin;
+    double vershok;
+    meter_to_sazhen(length);
+    QCOMPARE(int_sazhen, 8);
+    QCOMPARE(int_arshin, 7);
+    QCOMPARE(vershok, 11.4);
 }
 
-QTEST_APPLESS_MAIN(TesttestTest)
+void BoitsovTest::test_swapper()
+{
+    int number_to_swap = 54321;
+    int swapped_number;
+    swapper(number_to_swap);
+    QCOMPARE(swapped_number, 12345);
+}
+
+QTEST_APPLESS_MAIN(BoitsovTest)
 
 #include "tst_testtesttest.moc"

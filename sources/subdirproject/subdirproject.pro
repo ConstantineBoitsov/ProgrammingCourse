@@ -4,4 +4,5 @@ SUBDIRS += \
     app \
     lib \
     testtest \
-    untitled
+    cppapp \
+    cpptest
