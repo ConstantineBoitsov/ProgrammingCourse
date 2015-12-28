@@ -1,39 +1,46 @@
 #include "rat_num.h"
 
-RationalNumber::RationalNumber(int numer, int denom)
+RationalNum::RationalNum(const int num1, const int num2)
 {
-    numerator = numer;
-    denominator = denom;
+    numerator = num1;
+    denominator = num2;
 }
 
-RationalNumber::RationalNumber(RationalNumber& x)
+RationalNum::RationalNum(RationalNum &x)
 {
     numerator = x.numerator;
     denominator = x.denominator;
 }
-
-void RationalNumber::Sum(int num)
-{
+void RationalNum::Copy(RationalNum numb){
+    numerator = numb.numerator;
+    denominator = numb.denominator;
+}
+void RationalNum::sum(int num){
     numerator += num*denominator;
-}
 
-void RationalNumber::Multiple(int Num)
-{
+}
+void RationalNum::Multi(int Num){
     numerator *= Num;
-}
 
-void RationalNumber::Divide(int Num)
-{
-    if (Num == 0)
-    {
+}
+void RationalNum::divide(int Num){
+    if (Num == 0){
         DevNull error;
         throw error;
     }
-    denominator *= Num;
+    denominator *= Num;}
+
+RationalNum RationalNum::operator/(int Num){
+    if (Num == 0){
+        DevNull error;
+        throw error;
+    }
+    RationalNum n;
+    n.denominator *= Num;
+    return n;
 }
 
-double RationalNumber::ToDouble() const
-{
-    return((double)numerator / (double)denominator);
+double RationalNum::ToDouble() const{
+    return((double)numerator / double(denominator));
 }
 

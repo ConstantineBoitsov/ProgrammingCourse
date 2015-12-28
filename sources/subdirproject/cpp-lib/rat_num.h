@@ -1,5 +1,6 @@
-#ifndef RAT_NUM
-#define RAT_NUM
+#ifndef RAT_NUM_H
+#define RAT_NUM_H
+
 
 #include <iostream>
 #include <exception>
@@ -11,14 +12,16 @@ class RationalNum
     int numerator;
     int denominator;
 public:
-    RationalNum(const int num1 = 1, const int num2 = 8);
-    RationalNum(RationalNum & x);
+    RationalNum(int numerator = 1, int denominator = 8);
     void Copy(RationalNum);
-    void sum(int);
+    void Sum(int);
     void Multi(int);
-    void divide(int);
-    double ToDouble() const;
+    void Divide(int);
+    double ToDouble();
+    RationalNum operator+(int);
+    RationalNum operator*(int);
     RationalNum operator/(int);
+
 private:
 
 };
@@ -28,5 +31,4 @@ public:
 
 };
 
-#endif // RAT_NUM
-
+#endif // RAT_NUM_H

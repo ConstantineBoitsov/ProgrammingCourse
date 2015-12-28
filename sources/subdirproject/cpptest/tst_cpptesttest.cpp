@@ -1,5 +1,6 @@
 #include <QString>
 #include <QtTest>
+#include "rat_num.h"
 
 class CpptestTest : public QObject
 {

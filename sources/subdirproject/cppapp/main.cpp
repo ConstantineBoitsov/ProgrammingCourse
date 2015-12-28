@@ -12,6 +12,7 @@ int main()
         Num.Multiple(2);
         Num.Sum(1);
         Num.Divide(0);
+        Num.Copy(Numb);
         cout << Numb.ToDouble() << endl;
         }
         catch(DevNull)
