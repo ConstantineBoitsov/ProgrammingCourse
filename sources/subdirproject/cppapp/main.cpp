@@ -6,19 +6,19 @@ using namespace std;
 int main()
 {
     try
-        {
-        RationalNumber Num;
-        RationalNumber Numb(1,8);
-        Num.Multiple(2);
+    {
+        RationalNum Num;
+        RationalNum Numb(1,8);
+        Num.Multi(2);
         Num.Sum(1);
         Num.Divide(0);
         Num.Copy(Numb);
         cout << Numb.ToDouble() << endl;
-        }
-        catch(DevNull)
-        {
-            cout << "DevNull! Achtung! One does not simply divide by zero!\n";
-        }
+    }
+    catch(DevNull)
+    {
+        cout << "DevNull! Achtung! One does not simply divide by zero!\n";
+    }
 
     return 0;
 }

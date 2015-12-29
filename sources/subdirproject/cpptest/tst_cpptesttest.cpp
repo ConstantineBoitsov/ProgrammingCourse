@@ -17,6 +17,11 @@ private Q_SLOTS:
     void test_rational_divide();
 };
 
+CpptestTest::CpptestTest()
+{
+
+}
+
 void CpptestTest::test_rational_divide(){
     RationalNum num;
     num.Divide(2);
@@ -27,6 +32,7 @@ void CpptestTest::test_rational_multi(){
     num.Multi(2);
     QCOMPARE(num.ToDouble(), 0.25);
 }
+
 void CpptestTest::test_rational_sum(){
     RationalNum num;
     num.Sum(1);
