@@ -28,6 +28,7 @@ void ui(void)
     case 4:
         fourth_task_text();
         ui_matrix();
+        break;
     case 5:
         fifth_task_text();
         ui_lower();

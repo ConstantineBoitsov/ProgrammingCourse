@@ -5,6 +5,7 @@ SUBDIRS += \
     lib \
     testtest \
     cppapp \
+    cpp-lib \
     cpptest
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/lib/release/ -llib

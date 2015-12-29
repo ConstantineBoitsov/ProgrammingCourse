@@ -3,26 +3,36 @@
 
 RationalNum::RationalNum(int numerator, int denominator): numerator(numerator), denominator(denominator){}
 
-void RationalNum::Copy(RationalNum numb){
+void RationalNum::Copy(RationalNum numb)
+{
     numerator = numb.numerator;
     denominator = numb.denominator;
 }
-void RationalNum::Sum(int num){
+
+void RationalNum::Sum(int num)
+{
     numerator += num*denominator;
 
 }
-void RationalNum::Multi(int num){
+
+void RationalNum::Multi(int num)
+{
     numerator *= num;
 
 }
-void RationalNum::Divide(int num){
+
+void RationalNum::Divide(int num)
+{
     if (num == 0){
         DevNull error;
         throw error;
     }
-    denominator *= num;}
+    denominator *= num;
 
-RationalNum RationalNum::operator/(int num){
+}
+
+RationalNum RationalNum::operator/(int num)
+{
     if (num == 0){
         DevNull error;
         throw error;

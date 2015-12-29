@@ -1,5 +1,5 @@
-#ifndef LOWER
-#define LOWER
+#ifndef LOWER_H
+#define LOWER_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -13,5 +13,5 @@ void lower_case(char *);
 }
 #endif
 
-#endif // LOWER
+#endif // LOWER_H
 
