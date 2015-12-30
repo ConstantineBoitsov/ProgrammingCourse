@@ -1,0 +1,613 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{ucs} 
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[OT1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+%\usepackage{tikz-uml}               % uml диаграммы
+
+% TODOs
+\usepackage[%
+  colorinlistoftodos,
+  shadow
+]{todonotes}
+
+% Генератор текста
+\usepackage{blindtext}
+
+\usepackage[section]{placeins}
+
+%------------------------------------------------------------------------------
+
+% Подсветка синтаксиса
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+ 
+ % Цвета для кода
+\definecolor{string}{HTML}{B40000} % цвет строк в коде
+\definecolor{comment}{HTML}{008000} % цвет комментариев в коде
+\definecolor{keyword}{HTML}{1A00FF} % цвет ключевых слов в коде
+\definecolor{morecomment}{HTML}{8000FF} % цвет include и других элементов в коде
+\definecolor{captiontext}{HTML}{FFFFFF} % цвет текста заголовка в коде
+\definecolor{captionbk}{HTML}{999999} % цвет фона заголовка в коде
+\definecolor{bk}{HTML}{FFFFFF} % цвет фона в коде
+\definecolor{frame}{HTML}{999999} % цвет рамки в коде
+\definecolor{brackets}{HTML}{B40000} % цвет скобок в коде
+ 
+ % Настройки отображения кода
+\lstset{
+language=C, % Язык кода по умолчанию
+morekeywords={*,...}, % если хотите добавить ключевые слова, то добавляйте
+ % Цвета
+keywordstyle=\color{keyword}\ttfamily\bfseries,
+stringstyle=\color{string}\ttfamily,
+commentstyle=\color{comment}\ttfamily\itshape,
+morecomment=[l][\color{morecomment}]{\#}, 
+ % Настройки отображения     
+breaklines=true, % Перенос длинных строк
+basicstyle=\ttfamily\footnotesize, % Шрифт для отображения кода
+backgroundcolor=\color{bk}, % Цвет фона кода
+%frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep, % Рамка, подогнанная к заголовку
+frame=tblr
+rulecolor=\color{frame}, % Цвет рамки
+tabsize=3, % Размер табуляции в пробелах
+showstringspaces=false,
+ % Настройка отображения номеров строк. Если не нужно, то удалите весь блок
+numbers=left, % Слева отображаются номера строк
+stepnumber=1, % Каждую строку нумеровать
+numbersep=5pt, % Отступ от кода 
+numberstyle=\small\color{black}, % Стиль написания номеров строк
+ % Для отображения русского языка
+extendedchars=true,
+literate={Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+  {~}{{\textasciitilde}}1
+  {а}{{\selectfont\char224}}1
+  {б}{{\selectfont\char225}}1
+  {в}{{\selectfont\char226}}1
+  {г}{{\selectfont\char227}}1
+  {д}{{\selectfont\char228}}1
+  {е}{{\selectfont\char229}}1
+  {ё}{{\"e}}1
+  {ж}{{\selectfont\char230}}1
+  {з}{{\selectfont\char231}}1
+  {и}{{\selectfont\char232}}1
+  {й}{{\selectfont\char233}}1
+  {к}{{\selectfont\char234}}1
+  {л}{{\selectfont\char235}}1
+  {м}{{\selectfont\char236}}1
+  {н}{{\selectfont\char237}}1
+  {о}{{\selectfont\char238}}1
+  {п}{{\selectfont\char239}}1
+  {р}{{\selectfont\char240}}1
+  {с}{{\selectfont\char241}}1
+  {т}{{\selectfont\char242}}1
+  {у}{{\selectfont\char243}}1
+  {ф}{{\selectfont\char244}}1
+  {х}{{\selectfont\char245}}1
+  {ц}{{\selectfont\char246}}1
+  {ч}{{\selectfont\char247}}1
+  {ш}{{\selectfont\char248}}1
+  {щ}{{\selectfont\char249}}1
+  {ъ}{{\selectfont\char250}}1
+  {ы}{{\selectfont\char251}}1
+  {ь}{{\selectfont\char252}}1
+  {э}{{\selectfont\char253}}1
+  {ю}{{\selectfont\char254}}1
+  {я}{{\selectfont\char255}}1
+  {А}{{\selectfont\char192}}1
+  {Б}{{\selectfont\char193}}1
+  {В}{{\selectfont\char194}}1
+  {Г}{{\selectfont\char195}}1
+  {Д}{{\selectfont\char196}}1
+  {Е}{{\selectfont\char197}}1
+  {Ё}{{\"E}}1
+  {Ж}{{\selectfont\char198}}1
+  {З}{{\selectfont\char199}}1
+  {И}{{\selectfont\char200}}1
+  {Й}{{\selectfont\char201}}1
+  {К}{{\selectfont\char202}}1
+  {Л}{{\selectfont\char203}}1
+  {М}{{\selectfont\char204}}1
+  {Н}{{\selectfont\char205}}1
+  {О}{{\selectfont\char206}}1
+  {П}{{\selectfont\char207}}1
+  {Р}{{\selectfont\char208}}1
+  {С}{{\selectfont\char209}}1
+  {Т}{{\selectfont\char210}}1
+  {У}{{\selectfont\char211}}1
+  {Ф}{{\selectfont\char212}}1
+  {Х}{{\selectfont\char213}}1
+  {Ц}{{\selectfont\char214}}1
+  {Ч}{{\selectfont\char215}}1
+  {Ш}{{\selectfont\char216}}1
+  {Щ}{{\selectfont\char217}}1
+  {Ъ}{{\selectfont\char218}}1
+  {Ы}{{\selectfont\char219}}1
+  {Ь}{{\selectfont\char220}}1
+  {Э}{{\selectfont\char221}}1
+  {Ю}{{\selectfont\char222}}1
+  {Я}{{\selectfont\char223}}1
+  {і}{{\selectfont\char105}}1
+  {ї}{{\selectfont\char168}}1
+  {є}{{\selectfont\char185}}1
+  {ґ}{{\selectfont\char160}}1
+  {І}{{\selectfont\char73}}1
+  {Ї}{{\selectfont\char136}}1
+  {Є}{{\selectfont\char153}}1
+  {Ґ}{{\selectfont\char128}}1
+  {\{}{{{\color{brackets}\{}}}1 % Цвет скобок {
+  {\}}{{{\color{brackets}\}}}}1 % Цвет скобок }
+}
+ 
+ % Для настройки заголовка кода
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{сaptiontext}}
+\DeclareCaptionFormat{listing}{\parbox{\linewidth}{\colorbox{сaptionbk}{\parbox{\linewidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\renewcommand{\lstlistingname}{Код} % Переименование Listings в нужное именование структуры
+
+
+%------------------------------------------------------------------------------
+
+\author{К.~С.~Бойцов}
+\title{Программирование}
+\begin{document}
+\maketitle
+\chapter{Основные конструкции языка}
+%############################################################
+\section{Задание 1}
+\subsection{Задание}
+
+Пользователь задает длину отрезка в метрах. Вывести длину того же отрезка в саженях, аршинах и вершках.
+
+\subsection{Теоретические сведения}
+
+Воспользуемся следующим условием: \texttt{1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.}
+
+Для реализации данного алгоритма были использованы функции стандартной библиотеки, прототипы которых находятся в файле stdio.h, для ввода и вывода информации и math.h для выполнения необходимых вычислений.
+
+
+\subsection{Проектирование}
+
+В ходе проектирования было решено выделить 3 функции:
+
+	\begin{itemize}
+	
+
+		\item void ui\_ meter\_ to\_ sazhen()
+		
+		 Пользователь вводит действительное \texttt{double} число метров, после чего вызывается конвертирующая функция.
+		 
+		 \item void meter\_ to\_ sazhen(double length)
+		 
+		 Функция, конвертирующая метры в сажени, аршины и вершки и выводящая результат в консоль.
+		 Параметром функции является длина отрезка в метрах типа \texttt{double}. 
+		 
+		 \item void first\_ task\_ text()
+	
+	Функция выводит текст задания в консоль в меню пользовательского взаимодействия.
+		 				
+	\end{itemize}
+
+\subsection{Описание тестового стенда и методики тестирования}
+Среда разработки QtCreator 3.5.0, компилятор gcc (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010, операционная система Ubuntu 15.10.
+
+Для тестирования работы программы были выполнены статический анализ, также было проведено автоматической тестирование.
+
+\subsection{Тестовый план и результаты тестирования}
+		Для статического анализа использовалась утилита Cppcheck.
+		
+		\vspace{\baselineskip}
+		 Cppcheck выдал незначительные предупреждения.
+		
+		\vspace{\baselineskip}
+		При автоматическом тестировании вызывалась функция meter\_ to\_ sazhen, затем полученные значения сравнивались с ожидаемыми значениями. Результаты тестирования представлены в листингах.
+		
+		\vspace{\baselineskip}
+	 
+
+ 
+\subsection{Выводы}
+
+При выполнении задания я отработал свои навыки в работе с основными конструкциями языка и получил опыт в организации функций одной программы.
+
+\subsection*{Листинги}
+
+meter\_ to\_ sazhen.c
+\lstinputlisting[]
+{../sources/subdirproject/lib/meter_to_sazhen.c}
+
+\vspace{\baselineskip}
+
+ui\_ meter\_ to\_ sazhen.c
+\lstinputlisting[]
+{../sources/subdirproject/app/ui_meter_to_sazhen.c}
+
+
+\section{Задание 2}
+\subsection{Задание}
+
+Определить, пройдет ли кирпич со сторонами $а$, $b$, $c$ сквозь прямоугольное отверстие в стене со сторонами $r$ и $s$. Стороны отверстия должны быть параллельны граням кирпича. 
+
+\subsection{Теоритические сведения}
+
+В ходе выполения задания использовалась конструкция if...else. Кроме того, были применены функции стандартной библотеки из заголовочного файла stdio.h для ввода и вывода информации.
+
+\subsection{Проектирование}
+
+
+В ходе проектирования были выделены 5 функций:
+
+\begin{itemize}
+
+	\item void input\_ abc(int * a, int * b, int * c)
+
+	Параметрами функции являются 3 целых значения.	
+	Пользователю предлагается ввести 3 измерения кирпича.
+	
+	\item void input\_ hole(int * r, int * s)
+	
+	Параметрами функции являются 2 целых значения.
+	Пользователю предлагается ввести 2 измерения отверстия.
+	
+	\item int brick(int length, int width, int height, int hole\_ length, int hole\_ width)
+	
+	Функция имеет 5 параметров: измерения кирпича и измерения отверстия.
+	В функции происходят сравнения величин, после чего она возвращает либо удовлетворяющий набор условий, либо неудовлетворяющий.
+	
+	\item void ui\_ brick()
+	
+	Функция в зависимости от возвращенного значения функции \texttt{brick} выводит в консоль ответ на заданный вопрос.
+	
+	\item void second\_ task\_ text()
+	
+	Функция выводит текст задания в консоль в меню пользовательского взаимодействия.
+	
+	
+	
+\end{itemize}
+
+
+\subsection{Описание тестового стенда и методики тестирования}
+Среда разработки QtCreator 3.5.0, компилятор gcc (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010, операционная система Ubuntu 15.10.
+
+Для тестирования работы программы был выполнены статический анализ.
+
+\subsection{Тестовый план и результаты тестирования}
+
+		Для статического анализа использовалась утилита Cppcheck.
+		
+		\vspace{\baselineskip}
+		
+ Cppcheck выдал незначительные предупреждения.		
+\subsection{Выводы}
+
+При выполнении задания я получил опыт в организации функций одной программы.
+
+\subsection*{Листинги}
+brick.c
+\lstinputlisting[]
+{../sources/subdirproject/lib/brick.c}
+
+\vspace{\baselineskip}
+
+ui\_ brick.c
+\lstinputlisting[]
+{../sources/subdirproject/app/ui_brick.c}
+
+%############################################################
+
+
+\chapter{Циклы}
+\section{Задание 1}
+\subsection{Задание}
+
+Поменять порядок цифр заданного натурального числа на обратный.Пример: 7283916 > 6193827.Строковые функции не использовать.
+
+\subsection{Теоритические сведения}
+
+В ходе выполения задания для произведения необходимых вычислений и преобразований использовались операции деление "\textbackslash" и деление с остатком "\%". Также использовался цикл while. Кроме того, были применены функции стандартной библотеки из заголовочного файла stdio.h для ввода и вывода информации.
+
+
+\subsection{Проектирование}
+
+В ходе проектирования были выделены 3 функции:
+
+\begin{itemize}
+	\item void ui\_ swapper()
+
+	Функция считывает из консоли целое число, которое нужно развернуть, вызывает разворачивающую функцию и выводит готовое число.
+	
+	\item int swapper(int number\_ to\_ swap)
+	
+	Параметром функции является целое число, которое нужно развернуть.
+	В функции происходит разворот числа и возвращение его значения.
+	
+	\item void third\_ task\_ text()
+	
+	Функция выводит текст задания в консоль в меню пользовательского взаимодействия.
+	
+	
+\end{itemize}
+
+
+\subsection{Описание тестового стенда и методики тестирования}
+
+Среда разработки QtCreator 3.5.0, компилятор gcc (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010, операционная система Ubuntu 15.10.
+
+Для тестирования работы программы были выполнены статический анализ, также было проведено автоматическое тестирование.
+
+\subsection{Тестовый план и результаты тестирования}
+
+	Для статического анализа использовалась утилита Cppcheck.
+	
+	\vspace{\baselineskip}
+	 Cppcheck выдал незначительные предупреждения.
+	
+	
+
+	\vspace{\baselineskip}
+	
+	В ходе автоматического тестирования  вызывалась функция swapper. Результаты тестирования предоставлены в листингах.
+	 \vspace{\baselineskip}
+ 
+
+\subsection{Выводы}
+В ходе выполнения я отработал навыки работы с циклами.
+\subsection*{Листинги}
+swapper.c
+\lstinputlisting[]
+{../sources/subdirproject/lib/swapper.c}
+
+\vspace{\baselineskip}
+
+ui\_ swapper.c
+\lstinputlisting[]
+{../sources/subdirproject/app/ui_swapper.c}
+
+%############################################################
+
+\chapter{Массивы}
+\section{Задание 1}
+\subsection{Задание}
+
+В матрице $X(m,n)$ каждый элемент (кроме граничных) заменить суммой непосредственно примыкающих к нему элементов по вертикали, горизонтали и диагоналям.
+
+\subsection{Теоритические сведения}
+
+Для выполнения задания использовался цикл for, конструкция if...else, а также функции стандартной библиотеки из заголовочного файла stdlib.h для динамического выделения и освобождения памяти и stdio.h для ввода, вывода информации и работы с файлами.
+
+\subsection{Проектирование}
+
+Ввод и вывод данных реализован с помощью файлов. Входной файл должен содержать матрицу из целых чисел. 
+ 
+В ходе проектирования были выделены следующие функции:
+
+\begin{itemize}
+ 	
+ 	\item void ui\_ matrix()
+ 	
+ 	Пользователь вводит нужное ему количество столбцов и рядов из исходной матрицы, после чего создаётся и выводится в консоль созданная матрица.
+ 	
+ 	\item void matrix(int coloumns, int rows)
+ 	
+ 	Параметрами функции являются целые количества столбцов и рядов.
+ 	В функции выделяется память, генерируются и выводятся исходная и новая матрицы, после чего память освобождается.
+ 	
+ 	\item void fourth\_ task\_ text()
+	
+	Функция выводит текст задания в консоль в меню пользовательского взаимодействия.
+ 	
+ 	
+\end{itemize}
+	
+\subsection{Описание тестового стенда и методики тестирования}
+Среда разработки QtCreator 3.5.0, компилятор gcc (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010, операционная система Ubuntu 15.10.
+
+Для тестирования работы программы был выполнены статический анализ.
+\subsection{Тестовый план и результаты тестирования}
+
+Для статического анализа использовалась утилита Cppcheck.
+
+\vspace{\baselineskip}
+Cppcheck выдал незначительные предупреждения.
+
+\subsection{Выводы}
+
+При выполнении задания я понял принцип организации программы при работе с выделением динамической памяти, научился работать с файлами.
+
+\subsection*{Листинги}
+
+matrix.c
+\lstinputlisting[]
+{../sources/subdirproject/lib/matrix.c}
+
+\vspace{\baselineskip}
+
+ui\_ matrix.c
+
+\lstinputlisting[]
+{../sources/subdirproject/app/ui_matrix.c}
+
+%############################################################
+
+\chapter{Строки}
+\section{Задание 1}
+\subsection{Задание}
+
+Текст, не содержащий собственных имен и сокращений, набран полностью прописными русскими буквами.Заменить все прописные буквы, кроме букв, стоящих после точки, строчными буквами.
+
+
+\subsection{Теоритические сведения}
+
+Для выполнения задания использовался цикл for, конструкция if...else, а также функции стандартной библиотеки из заголовочного файла ctype.h для  работы со строками и stdio.h для ввода, вывода информации.
+
+\subsection{Проектирование}
+
+В ходе проектирования были выделены следующие функции:
+
+\begin{itemize}
+	 \item void ui\_ lower()
+	 
+ 	Инициализируется массив из символов, после чего поочерёдно вызываются две следующие функции и выводится конечный ответ.
+ 	
+ 	\item void input\_ lower(char * str)
+ 	
+ 	Пользователю предлагается ввести строку, в которой все буквы будут прописными.
+ 	
+ 	\item void lower\_ case(char * str)
+ 	
+ 	Все прописные буквы в предложении, кроме первой,заменяются на строчные.
+ 	
+ 	\item void fifth\_ task\_ text()
+	
+	Функция выводит текст задания в консоль в меню пользовательского взаимодействия. 
+\end{itemize}
+	
+	
+\subsection{Описание тестового стенда и методики тестирования}
+Среда разработки QtCreator 3.5.0, компилятор gcc (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010, операционная система Ubuntu 15.10.
+
+Для тестирования работы программы был выполнены статический анализ.
+\subsection{Тестовый план и результаты тестирования}
+
+Для статического анализа использовалась утилита Cppcheck.
+
+\vspace{\baselineskip}
+ Cppcheck не выдал ошибок.
+
+\vspace{\baselineskip}
+
+\subsection{Выводы}
+
+При выполнении задания я научился пользоваться функциями для работы со строками.
+\subsection*{Листинги}
+lower.c
+\lstinputlisting[]
+{../sources/subdirproject/lib/lower.c}
+
+\vspace{\baselineskip}
+
+ui\_ lower.c
+\lstinputlisting[]
+{../sources/subdirproject/app/ui_lower.c}
+
+%############################################################
+
+\chapter{Инкапсуляция}
+\section{Задание 1}
+\subsection{Задание}
+
+Реализовать класс РАЦИОНАЛЬНОЕ ЧИСЛО (представимое в виде m/n). Требуемые методы: конструктор, деструктор, копирование, сложение, вычитание, умножение, деление, преобразование к типу double.
+
+\subsection{Теоритические сведения}
+
+Для выполнения задания использовался цикл for, конструкция if...else, а также класс exception стнадартной бибилиотеки.
+
+\subsection{Проектирование}
+
+
+В ходе проектирования программы было решено создать класс, который называется RationalNum.
+Созданный класс содержит 2 поля с модификатором доступа private:
+
+\begin{itemize}
+	\item  int numerator;
+    \item  int denominator;
+    Числитель и знаменатель рационального числа.
+\end{itemize}
+	
+	В классе определен конструктор 
+\begin{itemize}
+
+	\item RarionalNum(int numerator = 1, int denominator = 8)
+	
+	Конструктор со значениями по умолчанию для числа. 
+	
+			
+\end{itemize}	
+В классе определены 5 методов с модификатором доступа public:		
+
+\begin{enumerate}	
+	\item void Copy(RationalNum);
+	
+	Метод, аналогичный конструктору копирования.
+	
+	\item void Sum(int);
+	
+	Метод обеспечивает сложение. 
+	
+	\item void Multi(int);
+	
+	Метод обеспечивает умножение.
+	
+	\item void Divide(int);
+	
+	Метод обеспечивает деление.
+	
+	\item double ToDouble();
+	
+	Метод преобразует рациональное число к типу double. Возвращает соответственно это число.
+	
+	Так же перегружены операторы сложения, умножения и деления.
+
+\end{enumerate}
+	Так же был создаы класса исключений:
+	
+		\begin{itemize}
+		\item DevNull
+		Исключение вызывается, когда совершается попытка деления на ноль.
+		\end{itemize}
+		
+		
+\subsection{Описание тестового стенда и методики тестирования}
+Среда разработки QtCreator 3.5.0, компилятор gcc (Ubuntu 5.2.1-22ubuntu2) 5.2.1 20151010, операционная система Ubuntu 15.10.
+
+Для тестирования работы программы были выполнены статический анализ, также было проведено автоматической тестирование.
+
+\subsection{Тестовый план и результаты тестирования}
+
+Для статического анализа использовалась утилита Cppcheck.
+
+\vspace{\baselineskip}
+Cppcheck ошибок не обнаружил.
+\vspace{\baselineskip}
+
+Результаты автоматического тестирования представлены в листингах.
+
+\subsection{Выводы}
+
+При выполнении задания я понял принцип инкапсуляции и организации полей и методов класса.
+
+\subsection*{Листинги}
+rat\_ num.h
+\lstinputlisting[]
+{../sources/subdirproject/cpp-lib/rat_num.h}
+
+\vspace{\baselineskip}
+
+rat\_ num.cpp
+\lstinputlisting[]
+{../sources/subdirproject/cpp-lib/rat_num.cpp}
+
+\chapter {Приложение}
+
+\section{Автоматические тесты}
+
+	\lstinputlisting[]{../sources/subdirproject/cpptest/tst_cpptesttest.cpp}
+	
+	
+	\lstinputlisting[]{../sources/subdirproject/testtest/tst_testtesttest.cpp}
+
+\end{document}
