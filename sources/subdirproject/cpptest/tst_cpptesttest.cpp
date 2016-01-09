@@ -1,8 +1,9 @@
 #include <QString>
 #include <QtTest>
 #include "rat_num.h"
+#include "swapper.h"
+#include "meter_to_sazhen.h"
 
-using std::string;
 
 class CpptestTest : public QObject
 {
@@ -15,6 +16,8 @@ private Q_SLOTS:
     void test_rational_sum();
     void test_rational_multi();
     void test_rational_divide();
+    void test_turnover();
+//    void test_converter();
 };
 
 CpptestTest::CpptestTest()
@@ -38,6 +41,16 @@ void CpptestTest::test_rational_sum(){
     num.Sum(1);
     QCOMPARE(num.ToDouble(), 1.125);
 }
+
+void CpptestTest::test_turnover(){
+    Swapper num;
+    QCOMPARE(num.swapper(), 54321);
+}
+
+//void CpptestTest::test_converter(){
+//    SAV result = new SAV(19);
+//    QCOMPARE(result.Print(), "8 sazhen(s), 2 arshin(s), 11.4 vershok(s)");
+//}
 
 QTEST_APPLESS_MAIN(CpptestTest)
 
